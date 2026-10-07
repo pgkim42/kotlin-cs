@@ -17,6 +17,11 @@ allprojects {
 subprojects {
     apply(plugin = "org.jetbrains.kotlin.jvm")
     
+    // 01-04 모듈에만 application 플러그인 적용
+    if (project.name in listOf("01-basics", "02-collections", "03-oop", "04-coroutines")) {
+        apply(plugin = "application")
+    }
+    
     tasks.withType<JavaCompile> {
         sourceCompatibility = "17"
         targetCompatibility = "17"
